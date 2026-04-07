@@ -148,7 +148,7 @@ return {
                 signs = true,
                 float = {
                     border = "rounded",
-                    source = "always",
+                    source = true,
                     header = "",
                     prefix = "",
                 },
@@ -195,10 +195,6 @@ return {
                         luasnip.lsp_expand(args.body)
                     end,
                 },
-                window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
-                },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -223,14 +219,6 @@ return {
                             fallback()
                         end
                     end, { "i", "s" }),
-                }),
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp", priority = 1000 },
-                    { name = "nvim_lsp_signature_help", priority = 950 },
-                    { name = "luasnip", priority = 750 },
-                    { name = "path", priority = 500 },
-                }, {
-                    { name = "buffer", keyword_length = 3, priority = 250 },
                 }),
                 formatting = {
                     format = function(entry, vim_item)
