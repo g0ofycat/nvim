@@ -24,7 +24,7 @@ keymap("n", "<leader>ss", function() require("persistence").select() end, { desc
 -- // EXPLORER KEYBINDS
 --=======================
 
-keymap("n", "<leader>r", function()
+keymap("n", "<leader>e", function()
     local snacks = require("snacks")
     local explorer_win = nil
 
