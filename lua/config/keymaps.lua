@@ -110,3 +110,4 @@ keymap("i", "<C-W>", "<Esc>viW", { desc = "Select current WORD" })
 
 keymap("n", "<Tab>", ":BufferLineCycleNext<CR>", { desc = "Next topbar buffer" })
 keymap("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { desc = "Previous topbar buffer" })
+keymap("n", "<leader>bd", ":bp|bd #<CR>", { desc = "Close current buffer" })
