@@ -10,8 +10,8 @@ return {
         local wpm = require("wpm")
         wpm.setup({
             interval = 1000,
-            threshold = 50,
-            refresh_rate = 100,
+            threshold = 10,
+            refresh_rate = 500,
         })
     end,
 }
