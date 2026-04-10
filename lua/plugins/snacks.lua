@@ -8,6 +8,16 @@ return {
 	priority = 1000,
 	lazy = false,
 	opts = {
+		picker = {
+			sources = {
+				explorer = {
+					enabled = true,
+					hidden = true,
+					ignored = true,
+				},
+			},
+		},
+
 		notifier = {
 			enabled = true,
 			timeout = 3000,
@@ -18,7 +28,5 @@ return {
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
 		image = { enabled = false },
-
-		explorer = { enabled = true },
 	},
 }
