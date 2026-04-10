@@ -13,10 +13,10 @@ vim.g.autoformat = false
 
 vim.opt.list = true
 vim.opt.listchars:append({
-    space = '·',
-    tab = '→ ',
-    trail = '•',
-    nbsp = '␣',
+	space = '·',
+	tab = '→ ',
+	trail = '•',
+	nbsp = '␣',
 })
 
 --=======================
@@ -39,13 +39,13 @@ vim.env.CXX = "g++"
 --=======================
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "*" },
+	pattern = { "*" },
 
-    callback = function()
-        vim.opt.formatoptions:remove("c")
-        vim.opt.formatoptions:remove("r")
-        vim.opt.formatoptions:remove("o")
-    end,
+	callback = function()
+		vim.opt.formatoptions:remove("c")
+		vim.opt.formatoptions:remove("r")
+		vim.opt.formatoptions:remove("o")
+	end,
 })
 
 --=======================

@@ -25,26 +25,26 @@ keymap("n", "<leader>ss", function() require("persistence").select() end, { desc
 --=======================
 
 keymap("n", "<leader>e", function()
-    local snacks = require("snacks")
-    local explorer_win = nil
+	local snacks = require("snacks")
+	local explorer_win = nil
 
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        if vim.bo[buf].filetype == "snacks_picker_list" then
-            explorer_win = win
-            break
-        end
-    end
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local buf = vim.api.nvim_win_get_buf(win)
+		if vim.bo[buf].filetype == "snacks_picker_list" then
+			explorer_win = win
+			break
+		end
+	end
 
-    if explorer_win then
-        if vim.api.nvim_get_current_win() == explorer_win then
-            vim.api.nvim_win_close(explorer_win, true)
-        else
-            vim.api.nvim_set_current_win(explorer_win)
-        end
-    else
-        snacks.explorer()
-    end
+	if explorer_win then
+		if vim.api.nvim_get_current_win() == explorer_win then
+			vim.api.nvim_win_close(explorer_win, true)
+		else
+			vim.api.nvim_set_current_win(explorer_win)
+		end
+	else
+		snacks.explorer()
+	end
 end, { desc = "Toggle explorer" })
 
 --=======================
@@ -61,11 +61,11 @@ keymap("t", "<esc>", [[<C-\><C-n>]], { silent = true, noremap = true })
 --=======================
 
 keymap("n", "<leader>cm", function()
-    vim.cmd("split | terminal cmake -S . -B build -G \"MinGW Makefiles\"")
+	vim.cmd("split | terminal cmake -S . -B build -G \"MinGW Makefiles\"")
 end, { desc = "CMake configure" })
 
 keymap("n", "<leader>cb", function()
-    vim.cmd("split | terminal cmake --build build --target run")
+	vim.cmd("split | terminal cmake --build build --target run")
 end, { desc = "CMake build and run" })
 
 --=======================
