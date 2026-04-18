@@ -9,6 +9,7 @@ vim.opt.tabstop = 4
 vim.opt.showtabline = 2
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
+vim.opt.signcolumn = "yes"
 vim.g.autoformat = false
 
 vim.opt.list = true
