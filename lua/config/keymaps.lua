@@ -10,7 +10,7 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap.set
 
-keymap("n", "e", "<cmd>enew<cr>", { desc = "New file" })
+keymap("n", "<leader>e", "<cmd>enew<cr>", { desc = "New file" })
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find file" })
 keymap("n", "<leader>fh", "<cmd>Telescope oldfiles<cr>", { desc = "Recently opened files" })
 keymap("n", "<leader>fr", "<cmd>Telescope frecency<cr>", { desc = "Frecency/MRU" })
@@ -111,3 +111,12 @@ keymap("i", "<C-W>", "<Esc>viW", { desc = "Select current WORD" })
 keymap("n", "<Tab>", ":BufferLineCycleNext<CR>", { desc = "Next topbar buffer" })
 keymap("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { desc = "Previous topbar buffer" })
 keymap("n", "<leader>bd", ":bp|bd #<CR>", { desc = "Close current buffer" })
+
+--=======================
+-- // ZELLIJ KEYBINDS
+--=======================
+
+keymap("n", "<C-h>", "<cmd>ZellijNavigateLeft<cr>", { desc = "Navigate left" })
+keymap("n", "<C-j>", "<cmd>ZellijNavigateDown<cr>", { desc = "Navigate down" })
+keymap("n", "<C-k>", "<cmd>ZellijNavigateUp<cr>", { desc = "Navigate up" })
+keymap("n", "<C-l>", "<cmd>ZellijNavigateRight<cr>", { desc = "Navigate right" })
