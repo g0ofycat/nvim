@@ -92,10 +92,6 @@ keymap("v", "<C-v>", '"+p', { desc = "Paste" })
 -- // EDITOR KEYBINDS
 --=======================
 
-keymap('n', 'w', 'k', { noremap = true, silent = true })
-keymap('n', 'a', 'h', { noremap = true, silent = true })
-keymap('n', 's', 'j', { noremap = true, silent = true })
-keymap('n', 'd', 'l', { noremap = true, silent = true })
 keymap("n", "<C-n>", "<C-b>", { desc = "Move up one page" })
 keymap("n", "<C-m>", "<C-f>", { desc = "Move down one page" })
 
@@ -111,12 +107,3 @@ keymap("i", "<C-W>", "<Esc>viW", { desc = "Select current WORD" })
 keymap("n", "<Tab>", ":BufferLineCycleNext<CR>", { desc = "Next topbar buffer" })
 keymap("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { desc = "Previous topbar buffer" })
 keymap("n", "<leader>bd", ":bp|bd #<CR>", { desc = "Close current buffer" })
-
---=======================
--- // ZELLIJ KEYBINDS
---=======================
-
-keymap("n", "<C-h>", "<cmd>ZellijNavigateLeft<cr>", { desc = "Navigate left" })
-keymap("n", "<C-j>", "<cmd>ZellijNavigateDown<cr>", { desc = "Navigate down" })
-keymap("n", "<C-k>", "<cmd>ZellijNavigateUp<cr>", { desc = "Navigate up" })
-keymap("n", "<C-l>", "<cmd>ZellijNavigateRight<cr>", { desc = "Navigate right" })
