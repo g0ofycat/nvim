@@ -57,18 +57,6 @@ keymap('t', '<Space>', '<Space>', { noremap = true, nowait = true })
 keymap("t", "<esc>", [[<C-\><C-n>]], { silent = true, noremap = true })
 
 --=======================
--- // CMAKE KEYBINDS
---=======================
-
-keymap("n", "<leader>cm", function()
-	vim.cmd("split | terminal cmake -S . -B build -G \"MinGW Makefiles\"")
-end, { desc = "CMake configure" })
-
-keymap("n", "<leader>cb", function()
-	vim.cmd("split | terminal cmake --build build --target run")
-end, { desc = "CMake build and run" })
-
---=======================
 -- // WINDOW KEYBINDS
 --=======================
 
