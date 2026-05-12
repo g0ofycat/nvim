@@ -10,7 +10,7 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap.set
 
-keymap("n", "<leader>e", "<cmd>enew<cr>", { desc = "New file" })
+keymap("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New file" })
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find file" })
 keymap("n", "<leader>fh", "<cmd>Telescope oldfiles<cr>", { desc = "Recently opened files" })
 keymap("n", "<leader>fr", "<cmd>Telescope frecency<cr>", { desc = "Frecency/MRU" })
@@ -53,7 +53,7 @@ end, { desc = "Toggle explorer" })
 
 keymap('n', '<leader>t', ':split | terminal<CR>i', { desc = 'Open terminal' })
 keymap('t', '<leader>t', '<C-\\><C-n>:q<CR>', { desc = 'Close terminal' })
-keymap('t', '<Space>', '<Space>', { noremap = true, nowait = true })
+
 keymap("t", "<esc>", [[<C-\><C-n>]], { silent = true, noremap = true })
 
 --=======================
@@ -72,7 +72,7 @@ keymap("i", "<C-a>", "<Esc>ggVG", { desc = "Select all" })
 keymap("v", "<C-c>", '"+y', { desc = "Copy" })
 keymap("n", "<C-c>", '"+yy', { desc = "Copy line" })
 
-keymap("n", "<C-v>", '"+p', { desc = "Paste" })
+keymap("n", "<A-v>", '"+p', { desc = "Paste" })
 keymap("i", "<C-v>", '<C-r>+', { desc = "Paste" })
 keymap("v", "<C-v>", '"+p', { desc = "Paste" })
 
