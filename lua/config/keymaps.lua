@@ -53,7 +53,7 @@ end, { desc = "Toggle explorer" })
 
 keymap('n', '<leader>t', ':split | terminal<CR>i', { desc = 'Open terminal' })
 keymap('t', '<leader>t', '<C-\\><C-n>:q<CR>', { desc = 'Close terminal' })
-
+keymap('t', '<Space>', '<Space>', { noremap = true, nowait = true })
 keymap("t", "<esc>", [[<C-\><C-n>]], { silent = true, noremap = true })
 
 --=======================
