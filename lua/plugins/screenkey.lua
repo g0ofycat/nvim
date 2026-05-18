@@ -6,7 +6,7 @@ return {
 
 		screenkey.setup({
 			win_opts = {
-				row = vim.o.lines - vim.o.cmdheight - 1,
+				row = vim.o.lines - vim.o.cmdheight - 2,
 				col = vim.o.columns,
 				relative = "editor",
 				anchor = "SE",
