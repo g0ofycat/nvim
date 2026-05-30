@@ -64,7 +64,7 @@ return {
 						"--function-arg-placeholders",
 						"--fallback-style=llvm",
 						"--limit-results=20",
-						"--query-driver=C:\\winlibs-x86_64-cpp\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe",
+						"--query-driver=/usr/bin/g++,/usr/bin/clang++",
 					},
 					init_options = {
 						clangdFileStatus     = false,
