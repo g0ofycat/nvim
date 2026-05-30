@@ -64,7 +64,6 @@ return {
 						"--function-arg-placeholders",
 						"--fallback-style=llvm",
 						"--limit-results=20",
-						"--query-driver=/usr/bin/*",
 					},
 					init_options = {
 						clangdFileStatus     = false,
