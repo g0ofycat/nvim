@@ -64,7 +64,7 @@ return {
 						"--function-arg-placeholders",
 						"--fallback-style=llvm",
 						"--limit-results=20",
-						"--query-driver=/usr/bin/g++,/usr/bin/clang++",
+						"--query-driver=/usr/bin/*",
 					},
 					init_options = {
 						clangdFileStatus     = false,
@@ -92,7 +92,11 @@ return {
 				},
 			}
 
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+
 			for name, opts in pairs(servers) do
+				opts.capabilities = capabilities
+
 				vim.lsp.config(name, opts)
 				vim.lsp.enable(name)
 			end
@@ -103,10 +107,10 @@ return {
 
 			vim.diagnostic.config({
 				update_in_insert = false,
-				virtual_text     = { spacing = 4, prefix = "●" },
-				severity_sort    = true,
-				underline        = true,
-				signs            = {
+				virtual_text = { spacing = 4, prefix = "●" },
+				severity_sort = true,
+				underline = true,
+				signs = {
 					text = {
 						[vim.diagnostic.severity.ERROR] = " ",
 						[vim.diagnostic.severity.WARN]  = " ",
@@ -130,15 +134,15 @@ return {
 				callback = function(args)
 					local opts = { buffer = args.buf }
 
-					vim.keymap.set("n", "gd",         vim.lsp.buf.definition,     opts)
-					vim.keymap.set("n", "gD",         vim.lsp.buf.declaration,    opts)
-					vim.keymap.set("n", "gi",         vim.lsp.buf.implementation, opts)
-					vim.keymap.set("n", "gr",         vim.lsp.buf.references,     opts)
-					vim.keymap.set("n", "K",          vim.lsp.buf.hover,          opts)
-					vim.keymap.set("i", "<C-k>",      vim.lsp.buf.signature_help, opts)
-					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename,         opts)
-					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,    opts)
-					vim.keymap.set("n", "<leader>f",  function()
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+					vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
+					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+					vim.keymap.set("n", "<leader>f", function()
 						vim.lsp.buf.format({ async = true })
 					end, opts)
 				end,
@@ -153,10 +157,10 @@ return {
 	{
 		"saghen/blink.cmp",
 		dependencies = { "rafamadriz/friendly-snippets" },
-		version      = "1.*",
+		version = "1.*",
 
 		opts = {
-			keymap     = { preset = "default" },
+			keymap = { preset = "default" },
 			appearance = { nerd_font_variant = "normal" },
 			completion = {
 				documentation = { auto_show = true, auto_show_delay_ms = 200 },
@@ -173,7 +177,7 @@ return {
 				},
 			},
 			sources = {
-				default          = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path", "snippets", "buffer" },
 				min_keyword_length = 0,
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
@@ -189,8 +193,8 @@ return {
 	{
 		"stevearc/conform.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		cmd   = { "ConformInfo" },
-		keys  = {
+		cmd = { "ConformInfo" },
+		keys = {
 			{
 				"<S-A-f>",
 				function()
