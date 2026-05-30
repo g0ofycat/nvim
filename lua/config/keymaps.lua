@@ -1,0 +1,103 @@
+--=======================
+-- // KEYMAPS
+--=======================
+
+vim.g.mapleader = " "
+
+--=======================
+-- // PRESETS
+--=======================
+
+local keymap = vim.keymap.set
+
+keymap("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New file" })
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find file" })
+keymap("n", "<leader>fh", "<cmd>Telescope oldfiles<cr>", { desc = "Recently opened files" })
+keymap("n", "<leader>fr", "<cmd>Telescope frecency<cr>", { desc = "Frecency / MRU" })
+keymap("n", "<leader>fG", "<cmd>Telescope live_grep<cr>", { desc = "Find word in workspace" })
+keymap("n", "<leader>fg", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Find word in current buffer" })
+keymap("n", "<leader>fm", "<cmd>Telescope marks<cr>", { desc = "Jump to bookmarks" })
+
+keymap("n", "<leader>sl", function() require("persistence").load() end, { desc = "Open last session" })
+keymap("n", "<leader>ss", function() require("persistence").select() end, { desc = "Select session" })
+
+--=======================
+-- // EXPLORER KEYBINDS
+--=======================
+
+keymap("n", "<leader>e", function()
+	local snacks = require("snacks")
+	local explorer_win = nil
+
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local buf = vim.api.nvim_win_get_buf(win)
+		if vim.bo[buf].filetype == "snacks_picker_list" then
+			explorer_win = win
+			break
+		end
+	end
+
+	if explorer_win then
+		if vim.api.nvim_get_current_win() == explorer_win then
+			vim.api.nvim_win_close(explorer_win, true)
+		else
+			vim.api.nvim_set_current_win(explorer_win)
+		end
+	else
+		snacks.explorer()
+	end
+end, { desc = "Toggle explorer" })
+
+--=======================
+-- // TERMINAL KEYBINDS
+--=======================
+
+keymap("n", "<leader>t", "<cmd>split | terminal<cr>i", { desc = "Open terminal" })
+keymap("t", "<leader>t", "<C-\\><C-n><cmd>q<cr>", { desc = "Close terminal" })
+keymap("t", "<Space>",   "<Space>", { noremap = true, nowait = true })
+keymap("t", "<Esc>",     [[<C-\><C-n>]], { silent = true, noremap = true })
+
+--=======================
+-- // WINDOW KEYBINDS
+--=======================
+
+keymap("n", "<C-z>", "u",         { desc = "Undo" })
+keymap("i", "<C-z>", "<C-o>u",    { desc = "Undo" })
+
+keymap("n", "<C-y>", "<C-r>",     { desc = "Redo" })
+keymap("i", "<C-y>", "<C-o><C-r>",{ desc = "Redo" })
+
+keymap("n", "<C-a>", "ggVG",      { desc = "Select all" })
+keymap("i", "<C-a>", "<Esc>ggVG", { desc = "Select all" })
+
+keymap("v", "<C-c>", '"+y',       { desc = "Copy" })
+keymap("n", "<C-c>", '"+yy',      { desc = "Copy line" })
+
+keymap("n", "<A-v>", '"+p',       { desc = "Paste" })
+keymap("i", "<C-v>", "<C-r>+",    { desc = "Paste" })
+keymap("v", "<C-v>", '"+p',       { desc = "Paste" })
+
+--=======================
+-- // EDITOR KEYBINDS
+--=======================
+
+keymap("n", ",", "<C-b>", { desc = "Move up one page" })
+keymap("n", ".", "<C-f>", { desc = "Move down one page" })
+
+keymap("i", "<C-s>", "<Esc>vib", { desc = "Select in surrounding" })
+keymap("i", "<C-w>", "<Esc>viw", { desc = "Select current word" })
+keymap("i", "<C-W>", "<Esc>viW", { desc = "Select current WORD" })
+
+--=======================
+-- // BUFFERLINE KEYBINDS
+--=======================
+
+keymap("n", "<Tab>",      "<cmd>BufferLineCycleNext<cr>", { desc = "Next topbar buffer" })
+keymap("n", "<S-Tab>",    "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous topbar buffer" })
+keymap("n", "<leader>bd", "<cmd>bp|bd #<cr>",             { desc = "Close current buffer" })
+
+--=======================
+-- // MISC
+--=======================
+
+keymap("n", "<leader>lg", function() Snacks.lazygit() end, { desc = "LazyGit" })
