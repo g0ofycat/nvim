@@ -159,7 +159,12 @@ return {
 		version = "1.*",
 
 		opts = {
-			keymap = { preset = "default" },
+			keymap = {
+				preset = "none",
+				["j"] = { "select_next", "fallback" },
+				["k"] = { "select_prev", "fallback" },
+				["<Tab>"] = { "accept", "fallback" },
+			},
 			appearance = { nerd_font_variant = "normal" },
 			completion = {
 				documentation = { auto_show = true, auto_show_delay_ms = 200 },
