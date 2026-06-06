@@ -3,6 +3,10 @@
 --=======================
 
 vim.opt.number = true
+vim.opt.relativenumber = true
+
+vim.opt.statuscolumn = "%{v:relnum < 10 ? v:relnum : v:lnum}"
+
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.tabstop = 4
