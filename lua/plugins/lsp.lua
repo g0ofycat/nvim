@@ -161,8 +161,8 @@ return {
 		opts = {
 			keymap = {
 				preset = "none",
-				["j"] = { "select_next", "fallback" },
-				["k"] = { "select_prev", "fallback" },
+				[","] = { "select_next", "fallback" },
+				["."] = { "select_prev", "fallback" },
 				["<Tab>"] = { "accept", "fallback" },
 			},
 			appearance = { nerd_font_variant = "normal" },
