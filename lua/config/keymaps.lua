@@ -3,6 +3,7 @@
 --=======================
 
 vim.g.mapleader = " "
+vim.g.localmapleader = " "
 
 --=======================
 -- // PRESETS
@@ -103,5 +104,7 @@ keymap("n", "<leader>bd", "<cmd>bp|bd #<cr>",             { desc = "Close curren
 keymap("n", "<leader>lg", function() Snacks.lazygit() end, { desc = "LazyGit" })
 
 keymap("n", "<C-e>", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Wrap LSP messages" })
+
+keymap("n", "<C-f>", "<cmd>GrugFar<CR>", { desc = "Open GrugFar" })
 
 vim.g.loaded_matchit = 1
