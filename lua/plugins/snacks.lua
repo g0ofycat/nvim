@@ -49,7 +49,7 @@ return {
 		lazygit = { enabled = true },
 		bigfile = { enabled = true },
 		quickfile = { enabled = true },
-		statuscolumn = { enabled = true },
+		statuscolumn = { enabled = false },
 		words = { enabled = true },
 		image = { enabled = false },
 	},
