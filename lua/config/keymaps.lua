@@ -82,8 +82,8 @@ keymap("v", "<C-v>", '"+p',       { desc = "Paste" })
 -- // EDITOR KEYBINDS
 --=======================
 
-keymap("n", ",", "<C-b>", { desc = "Move up one page" })
-keymap("n", ".", "<C-f>", { desc = "Move down one page" })
+keymap("n", ".", "<C-b>", { desc = "Move up one page" })
+keymap("n", ",", "<C-f>", { desc = "Move down one page" })
 
 keymap("i", "<C-s>", "<Esc>vib", { desc = "Select in surrounding" })
 keymap("i", "<C-w>", "<Esc>viw", { desc = "Select current word" })

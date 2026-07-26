@@ -9,6 +9,8 @@ return {
 		config = true,
 	},
 
+
+
 	{
 		"neovim/nvim-lspconfig",
 		event        = { "BufReadPost", "BufNewFile" },
