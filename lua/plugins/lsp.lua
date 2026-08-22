@@ -5,17 +5,17 @@
 return {
 	{
 		"mason-org/mason.nvim",
-		cmd    = "Mason",
-		config = true,
+		cmd  = "Mason",
+		opts = {},
 	},
-
-
 
 	{
 		"neovim/nvim-lspconfig",
 		event        = { "BufReadPost", "BufNewFile" },
 		dependencies = { "saghen/blink.cmp" },
 		config = function()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+
 			local servers = {
 				pyright = {
 					settings = {
@@ -34,13 +34,7 @@ return {
 					settings = {
 						typescript = {
 							inlayHints = {
-								includeInlayParameterNameHints                        = "all",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayFunctionParameterTypeHints                = false,
-								includeInlayVariableTypeHints                         = false,
-								includeInlayPropertyDeclarationTypeHints              = false,
-								includeInlayFunctionLikeReturnTypeHints               = false,
-								includeInlayEnumMemberValueHints                      = false,
+								includeInlayParameterNameHints = "all",
 							},
 						},
 					},
@@ -69,10 +63,8 @@ return {
 						"--limit-results=20",
 					},
 					init_options = {
-						clangdFileStatus     = false,
-						usePlaceholders      = true,
-						completeUnimported   = false,
-						semanticHighlighting = false,
+						usePlaceholders    = true,
+						completeUnimported = false,
 					},
 				},
 
@@ -94,23 +86,20 @@ return {
 				},
 			}
 
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-			for name, opts in pairs(servers) do
-				opts.capabilities = capabilities
-				vim.lsp.config(name, opts)
-				vim.lsp.enable(name)
+			for name, cfg in pairs(servers) do
+				cfg.capabilities = capabilities
+				vim.lsp.config(name, cfg)
 			end
+			vim.lsp.enable(vim.tbl_keys(servers))
 
 			--=======================
 			-- // DIAGNOSTICS
 			--=======================
 
 			vim.diagnostic.config({
-				update_in_insert = false,
-				virtual_text     = { spacing = 4, prefix = "●" },
-				severity_sort    = true,
-				underline        = true,
+				virtual_text  = { spacing = 4, prefix = "●" },
+				severity_sort = true,
+				underline     = true,
 				signs = {
 					text = {
 						[vim.diagnostic.severity.ERROR] = " ",
@@ -119,12 +108,7 @@ return {
 						[vim.diagnostic.severity.INFO]  = " ",
 					},
 				},
-				float = {
-					border = "rounded",
-					source = true,
-					header = "",
-					prefix = "",
-				},
+				float = { border = "rounded", source = true },
 			})
 
 			--=======================
@@ -161,10 +145,10 @@ return {
 
 		opts = {
 			keymap = {
-				preset  = "none",
+				preset     = "none",
 				["<Down>"] = { "select_next", "fallback" },
-				["<Up>"] = { "select_prev", "fallback" },
-				["<Tab>"] = { "accept", "fallback" },
+				["<Up>"]   = { "select_prev", "fallback" },
+				["<Tab>"]  = { "accept", "fallback" },
 			},
 			appearance = { nerd_font_variant = "normal" },
 			completion = {
@@ -203,29 +187,28 @@ return {
 			{
 				"<S-A-f>",
 				function()
-					require("conform").format({ async = true, lsp_format = "fallback" })
+					require("conform").format({ async = true })
 				end,
 				mode = { "n", "v" },
 				desc = "Format buffer",
 			},
 		},
-		config = function()
-			require("conform").setup({
-				formatters_by_ft = {
-					cpp        = { "clang-format" },
-					c          = { "clang-format" },
-					python     = { "black" },
-					luau       = { "stylua" },
-					javascript = { "prettier" },
-					typescript = { "prettier" },
-				},
-				formatters = {
-					["clang-format"] = { prepend_args = { "--style={IndentWidth: 4, UseTab: Never}" } },
-					black            = { prepend_args = { "--line-length", "120" } },
-					stylua           = { prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" } },
-					prettier         = { prepend_args = { "--tab-width", "4", "--use-tabs", "false" } },
-				},
-			})
-		end,
+		opts = {
+			default_format_opts = { lsp_format = "fallback" },
+			formatters_by_ft = {
+				c          = { "clang-format" },
+				cpp        = { "clang-format" },
+				python     = { "black" },
+				luau       = { "stylua" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+			},
+			formatters = {
+				["clang-format"] = { prepend_args = { "--style={IndentWidth: 4, UseTab: Never}" } },
+				black            = { prepend_args = { "--line-length", "120" } },
+				stylua           = { prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" } },
+				prettier         = { prepend_args = { "--tab-width", "4", "--use-tabs", "false" } },
+			},
+		},
 	},
 }
