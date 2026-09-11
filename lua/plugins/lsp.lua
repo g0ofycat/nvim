@@ -50,6 +50,8 @@ return {
 					},
 				},
 
+				luau_lsp = {},
+
 				clangd = {
 					cmd = {
 						"clangd",
