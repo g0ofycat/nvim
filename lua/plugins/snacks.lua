@@ -11,12 +11,6 @@ return {
 		picker = {
 			sources = {
 				explorer = {
-					layout = {
-						preset = "sidebar",
-							layout = {
-								position = "right",
-							},
-					},
 					enabled = true,
 					hidden = true,
 					ignored = true,
