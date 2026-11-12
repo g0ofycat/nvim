@@ -8,17 +8,6 @@ return {
 	dependencies = {
 		{
 			"nvim-tree/nvim-web-devicons",
-			opts = {
-				color_icons = false,
-				override = {
-					default_icon = {
-						icon = "",
-						color = "#FFFFFF",
-						cterm_color = "15",
-						name = "Default",
-					},
-				},
-			},
 		},
 	},
 	priority = 1000,
