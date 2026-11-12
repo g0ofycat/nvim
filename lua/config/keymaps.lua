@@ -19,9 +19,6 @@ keymap("n", "<leader>fG", "<cmd>Telescope live_grep<cr>", { desc = "Find word in
 keymap("n", "<leader>fg", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Find word in current buffer" })
 keymap("n", "<leader>fm", "<cmd>Telescope marks<cr>", { desc = "Jump to bookmarks" })
 
-keymap("n", "<leader>sl", function() require("persistence").load() end, { desc = "Open last session" })
-keymap("n", "<leader>ss", function() require("persistence").select() end, { desc = "Select session" })
-
 --=======================
 -- // EXPLORER KEYBINDS
 --=======================
@@ -90,21 +87,11 @@ keymap("i", "<C-w>", "<Esc>viw", { desc = "Select current word" })
 keymap("i", "<C-W>", "<Esc>viW", { desc = "Select current WORD" })
 
 --=======================
--- // BUFFERLINE KEYBINDS
---=======================
-
-keymap("n", "<Tab>",      "<cmd>BufferLineCycleNext<cr>", { desc = "Next topbar buffer" })
-keymap("n", "<S-Tab>",    "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous topbar buffer" })
-keymap("n", "<leader>bd", "<cmd>bp|bd #<cr>",             { desc = "Close current buffer" })
-
---=======================
 -- // MISC
 --=======================
 
 keymap("n", "<leader>lg", function() Snacks.lazygit() end, { desc = "LazyGit" })
 
 keymap("n", "<C-e>", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Wrap LSP messages" })
-
-keymap("n", "<C-f>", "<cmd>GrugFar<CR>", { desc = "Open GrugFar" })
 
 vim.g.loaded_matchit = 1
