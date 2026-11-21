@@ -25,9 +25,43 @@ vim.pack.add({
 	"https://github.com/g0ofycat/ember-light",
 	"https://github.com/sphamba/smear-cursor.nvim",
 	"https://github.com/echasnovski/mini.icons",
+	"https://github.com/windwp/nvim-autopairs",
+	{ src = "https://github.com/saghen/blink.cmp", version = "78336bc89ee5365633bcf754d93df01678b5c08f" },
 }, { confirm = false })
 
 require("mini.icons").setup()
+
+require("nvim-autopairs").setup({
+	check_ts = false,
+	enable_check_bracket_line = false,
+})
+
+require("blink.cmp").setup({
+	keymap = {
+		preset = "none",
+		["j"] = { "select_next", "fallback" },
+		["k"] = { "select_prev", "fallback" },
+		["<Tab>"] = { "accept", "fallback" },
+	},
+	appearance = { nerd_font_variant = "normal" },
+	completion = {
+		documentation = { auto_show = true, auto_show_delay_ms = 200 },
+		menu = {
+			draw = {
+				columns = {
+					{ "label", "label_description", gap = 1 },
+					{ "kind_icon", "kind" },
+				},
+			},
+		},
+		list = { selection = { preselect = true, auto_insert = false } },
+	},
+	sources = {
+		default = { "lsp", "path", "snippets", "buffer" },
+		min_keyword_length = 0,
+	},
+	fuzzy = { implementation = "prefer_rust_with_warning" },
+})
 
 local Snacks = require("snacks")
 
@@ -92,7 +126,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 local map = vim.keymap.set
 local bin = vim.fn.stdpath("data") .. "/mason/bin/"
 
-vim.lsp.config("*", { root_markers = { ".git" } })
+vim.lsp.config("*", {
+	root_markers = { ".git" },
+	capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
 
 vim.lsp.config("clangd", {
 	cmd = {

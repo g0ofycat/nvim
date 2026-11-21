@@ -1,5 +1,10 @@
 {
   "plugins": {
+    "blink.cmp": {
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "'78336bc89ee5365633bcf754d93df01678b5c08f'"
+    },
     "ember-light": {
       "rev": "002000f234f11572592f3f8794199ff8c2d660ad",
       "src": "https://github.com/g0ofycat/ember-light"
@@ -11,6 +16,10 @@
     "mini.icons": {
       "rev": "5d58117d176c133f4cb5585ec8cb3450881c89a0",
       "src": "https://github.com/echasnovski/mini.icons"
+    },
+    "nvim-autopairs": {
+      "rev": "3172f40c16563db871a58f20d205c710ad782311",
+      "src": "https://github.com/windwp/nvim-autopairs"
     },
     "smear-cursor.nvim": {
       "rev": "f6cb57c342268177f719acc3968b9d8de3ecc969",
