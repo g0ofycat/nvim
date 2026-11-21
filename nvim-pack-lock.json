@@ -1,0 +1,20 @@
+{
+  "plugins": {
+    "ember-light": {
+      "rev": "002000f234f11572592f3f8794199ff8c2d660ad",
+      "src": "https://github.com/g0ofycat/ember-light"
+    },
+    "gitsigns.nvim": {
+      "rev": "c0862d382a35b7b45757d8d151a6a634c09bf3ce",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "smear-cursor.nvim": {
+      "rev": "f6cb57c342268177f719acc3968b9d8de3ecc969",
+      "src": "https://github.com/sphamba/smear-cursor.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
+      "src": "https://github.com/folke/snacks.nvim"
+    }
+  }
+}
