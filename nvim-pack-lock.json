@@ -8,6 +8,10 @@
       "rev": "c0862d382a35b7b45757d8d151a6a634c09bf3ce",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "mini.icons": {
+      "rev": "5d58117d176c133f4cb5585ec8cb3450881c89a0",
+      "src": "https://github.com/echasnovski/mini.icons"
+    },
     "smear-cursor.nvim": {
       "rev": "f6cb57c342268177f719acc3968b9d8de3ecc969",
       "src": "https://github.com/sphamba/smear-cursor.nvim"

@@ -24,7 +24,10 @@ vim.pack.add({
 	"https://github.com/lewis6991/gitsigns.nvim",
 	"https://github.com/g0ofycat/ember-light",
 	"https://github.com/sphamba/smear-cursor.nvim",
+	"https://github.com/echasnovski/mini.icons",
 }, { confirm = false })
+
+require("mini.icons").setup()
 
 local Snacks = require("snacks")
 
