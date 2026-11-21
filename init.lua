@@ -26,6 +26,7 @@ vim.pack.add({
 	"https://github.com/sphamba/smear-cursor.nvim",
 	"https://github.com/echasnovski/mini.icons",
 	"https://github.com/windwp/nvim-autopairs",
+	"https://github.com/ShouxTech/rojo.nvim",
 	{ src = "https://github.com/saghen/blink.cmp", version = "78336bc89ee5365633bcf754d93df01678b5c08f" },
 }, { confirm = false })
 
@@ -62,6 +63,8 @@ require("blink.cmp").setup({
 	},
 	fuzzy = { implementation = "prefer_rust_with_warning" },
 })
+
+require("rojo").setup({})
 
 local Snacks = require("snacks")
 
